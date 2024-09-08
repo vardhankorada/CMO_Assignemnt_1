@@ -321,7 +321,7 @@ def FSS(f,interval,tol=1e-4):
     fib_nums = gen_fib_nums(req_num_iters+5)[1:]
     curr_iter = 1
     while (b-a) >= tol:
-        rho = 1 - (fib_nums[req_num_iters-curr_iter+1]/fib_nums[req_num_iters-curr_iter+2])
+        rho = 1 - (fib_nums[req_num_iters-curr_iter]/fib_nums[req_num_iters-curr_iter+2]) ## MODIFIED
         if curr_iter == 1:
             x1 = rho * a + (1 - rho) * b
             x2 = (1 - rho) * a + rho * b
@@ -333,7 +333,7 @@ def FSS(f,interval,tol=1e-4):
         else:
             a = x1
             x1 = x2
-            x2 = (1-rho) * a + rho * b
+            x2 = (1-rho) * a + rho * b ## MODIFIED
         f_x1, f_x2 = f(x1), f(x2)
         res.append([a,b])
         curr_iter += 1
